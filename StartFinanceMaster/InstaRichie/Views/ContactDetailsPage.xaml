@@ -103,7 +103,7 @@
                         <TextBox x:Name="Address" Header="Address" PlaceholderText="1 King st, Adelaide" TextWrapping="Wrap"/>
                     </StackPanel>
                     <ListView x:Name="ContactDetailsList" Grid.Row="1" ItemTemplate="{StaticResource ContactDetailsListView}"
-                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="ContactDetailsList_SelectionChanged">
                         <RelativePanel.Below>PageStart</RelativePanel.Below>
                     </ListView>
                 </Grid>
