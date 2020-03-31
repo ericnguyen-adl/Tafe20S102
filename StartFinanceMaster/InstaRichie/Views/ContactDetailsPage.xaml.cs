@@ -60,6 +60,7 @@ namespace StartFinance.Views
                 else if (ContactName.Text.ToString() == "ContactName" || ContactName.Text.ToString() == "TelNum")
                 {
                     MessageDialog variableerror = new MessageDialog("You cannot use this name", "Oops..!");
+                    await variableerror.ShowAsync();
                 }
                 else
                 {   // Inserts the data
@@ -87,7 +88,7 @@ namespace StartFinance.Views
                 }
                 else
                 {
-                    /// no idea
+                    
                 }
 
             }
@@ -95,7 +96,7 @@ namespace StartFinance.Views
 
         private async void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageDialog ShowConf = new MessageDialog("This account will be permanently deleted.", "Important");
+            MessageDialog ShowConf = new MessageDialog("This action will delete the contact permanently.", "Important");
             ShowConf.Commands.Add(new UICommand("Yes, Delete")
             {
                 Id = 0
@@ -140,7 +141,9 @@ namespace StartFinance.Views
                     MessageDialog dialog = new MessageDialog("Contact is not selected to update", "Oops..!");
                     await dialog.ShowAsync();
                 }
+                // get Name of selectedContact
                 string selectedName = selectedContact.Name;
+                // validate to ensure Name, TelNum and Address are entered
                 if ((ContactName.Text.ToString() == "") || (TelNum.Text.ToString() == "") || (Address.Text.ToString() == ""))
                 {
                     MessageDialog dialog = new MessageDialog("Contact Name, Tel Num or Address not Entered", "Oops..!");
@@ -152,7 +155,7 @@ namespace StartFinance.Views
                     await variableerror.ShowAsync();
                 }
                 else
-                {   // Update the data
+                {   // Update the ContactDetails
                     string sql = "UPDATE ContactDetails SET Name = ?, TelNum = ?, Address = ? Where Name = ?";
                     conn.Execute(sql, ContactName.Text, TelNum.Text, Address.Text, selectedName); 
 
@@ -178,6 +181,7 @@ namespace StartFinance.Views
         private void ContactDetailsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedContact = (ContactDetails)ContactDetailsList.SelectedItem;
+            // display the selectContact attributes in Textboxes 
             if (selectedContact != null) {
                 ContactName.Text = selectedContact.Name;
                 TelNum.Text = selectedContact.TelNum;
