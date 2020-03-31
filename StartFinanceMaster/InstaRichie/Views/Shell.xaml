@@ -99,6 +99,20 @@
                 </StackPanel>
             </Controls:HamburgerButtonInfo>
 
+            <!--  Contact Details button  -->
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:ContactDetailsPage" 
+                                          AutomationProperties.Name="Jerry"
+                                          >
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Width="48" Height="48"
+                		Symbol="ContactInfo" />
+                    <TextBlock Margin="12,0,0,0" VerticalAlignment="Center"
+                               Text="Contact Details" />
+                </StackPanel>
+            </Controls:HamburgerButtonInfo>
+
+
+
             <!--  PersonalInformation button  -->
             <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:PersonalInformationPage" 
                                           AutomationProperties.Name="Jerry"
